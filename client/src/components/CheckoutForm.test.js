@@ -34,6 +34,14 @@ test("form shows success message on submit with form details", () => {
     fireEvent.change(stateInput, {target: {value: 'Alaska'}})
     fireEvent.change(zipCodeInput, {target: {value: '54273'}})
 
+    // asserting that those values did get input into the form
+    expect(firstNameInput).toHaveValue('Joe')
+    expect(lastNameInput).toHaveValue('Bay')
+    expect(addressInput).toHaveValue('1234 N Lancealot Lane')
+    expect(cityInput).toHaveValue('Camelot')
+    expect(stateInput).toHaveValue('Alaska')
+    expect(zipCodeInput).toHaveValue('54273')
+
     fireEvent.click(checkoutBtn) // clicks the button
 
     expect(screen.getByTestId(/successMessage/i)).toBeInTheDocument() // veryifys that the submitted result is showing in the document, checking by its Test ID
